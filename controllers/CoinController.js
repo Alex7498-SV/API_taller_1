@@ -32,7 +32,7 @@ CoinController.get = function (req, res) {
 
 CoinController.getByCountry = function (req, res) {
     // Buscar por id, el psot
-    coinModel.findOne({country: req.params.country}, function(err, coin){
+    coinModel.find({country: req.params.country}, function(err, coin){
         if (err) {
             res.status(500);
             res.json({code:500, err});
@@ -59,7 +59,7 @@ CoinController.getByName = function (req, res) {
 }
 CoinController.getByYear = function (req, res) {
     // Buscar por id, el psot
-    coinModel.findOne({year: req.params.year}, function(err, coin){
+    coinModel.find({year: req.params.year}, function(err, coin){
         if (err) {
             res.status(500);
             res.json({code:500, err});
@@ -72,7 +72,7 @@ CoinController.getByYear = function (req, res) {
 }
 CoinController.getByAvailable = function (req, res) {
     // Buscar por id, el psot
-    coinModel.findOne({isAvailable: req.params.status}, function(err, coin){
+    coinModel.find({isAvailable: req.params.status}, function(err, coin){
         if (err) {
             res.status(500);
             res.json({code:500, err});

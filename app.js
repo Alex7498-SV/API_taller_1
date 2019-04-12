@@ -11,12 +11,22 @@ var indexRouter = require('./routes/index');
 var coinRouter = require('./routes/coin');
 
 // Conection 
-mongoose.Promise = global.Promise;
-mongoose.connect('mongodb://localhost/taller2',{ useNewUrlParser: true })
-  .then(() => console.log('Mogoose is Conected'))
-  .catch((err) => {
-    console.log(err);
-  });
+// mongoose.Promise = global.Promise;
+// mongoose.connect('mongodb://localhost/taller2',{ useNewUrlParser: true })
+//   .then(() => console.log('Mogoose is Conected'))
+//   .catch((err) => {
+//     console.log(err);
+//   });
+
+
+const MongoClient = require('mongodb').MongoClient;
+const uri = "mongodb+srv://api:HayGOR3mU1Aqspd1@api-n6idk.mongodb.net/test?retryWrites=true";
+const client = new MongoClient(uri, { useNewUrlParser: true });
+client.connect(err => {
+  const collection = client.db("test").collection("devices");
+  // perform actions on the collection object
+  client.close();
+});
 
 
 var app = express();
